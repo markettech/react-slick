@@ -142,7 +142,8 @@ var helpers = {
   },
   getActiveImageHeight: function () {
     if (this.refs.list) {
-      return this.getCurrentSlideImg() && this.getCurrentSlideImg().getBoundingClientRect().height ||
+      const multiplier = this.getActiveImageWidth() / (this.getActiveImageWidth() - this.getPaddings(this.getCurrentSlide()));
+      return this.getCurrentSlideImg() && this.getCurrentSlideImg().getBoundingClientRect().height / multiplier ||
         this.getCurrentSlideImg() && this.getCurrentSlideImg().naturalHeight ||
         this.getCurrentSlide() && this.getCurrentSlide().getBoundingClientRect().height;
     }
@@ -252,7 +253,7 @@ var helpers = {
         const timeOffset = +new Date() - this.date;
         if (timeOffset < this.props.speed - 100) {
           if (this.props.devMode === true) {
-            console.warn(`react-slick: animation is was interrupted: should be ${this.props.speed}, but was ${timeOffset}`)
+            console.warn(`react-slick: animation was interrupted: should be ${this.props.speed}, but was ${timeOffset}`)
           }
           return false;
         }

@@ -253,7 +253,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _init: function _init() {
 	    this.initialize(this.props);
 	    this.adaptHeight();
-	    this.update();
 	  },
 	  componentDidMount: function componentDidMount() {
 	    var _this = this;
@@ -1046,7 +1045,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  getActiveImageHeight: function getActiveImageHeight() {
 	    if (this.refs.list) {
-	      return this.getCurrentSlideImg() && this.getCurrentSlideImg().getBoundingClientRect().height || this.getCurrentSlideImg() && this.getCurrentSlideImg().naturalHeight || this.getCurrentSlide() && this.getCurrentSlide().getBoundingClientRect().height;
+	      var multiplier = this.getActiveImageWidth() / (this.getActiveImageWidth() - this.getPaddings(this.getCurrentSlide()));
+	      return this.getCurrentSlideImg() && this.getCurrentSlideImg().getBoundingClientRect().height / multiplier || this.getCurrentSlideImg() && this.getCurrentSlideImg().naturalHeight || this.getCurrentSlide() && this.getCurrentSlide().getBoundingClientRect().height;
 	    }
 	    return 0;
 	  },
@@ -1152,7 +1152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var timeOffset = +new Date() - _this2.date;
 	        if (timeOffset < _this2.props.speed - 100) {
 	          if (_this2.props.devMode === true) {
-	            console.warn('react-slick: animation is was interrupted: should be ' + _this2.props.speed + ', but was ' + timeOffset);
+	            console.warn('react-slick: animation was interrupted: should be ' + _this2.props.speed + ', but was ' + timeOffset);
 	          }
 	          return false;
 	        }
