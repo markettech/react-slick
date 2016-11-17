@@ -260,6 +260,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Hack for autoplay -- Inspect Later
 	    this.onImageLoad(function () {
 	      _this._init();
+	      window.setTimeout(function () {
+	        _this.update(_this.props);
+	      }, 1500);
 	    });
 	    if (window.addEventListener) {
 	      window.addEventListener('resize', this.onWindowResized);
@@ -1045,8 +1048,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  getActiveImageHeight: function getActiveImageHeight() {
 	    if (this.refs.list) {
-	      var multiplier = this.getActiveImageWidth() / (this.getActiveImageWidth() - this.getPaddings(this.getCurrentSlide()));
-	      return this.getCurrentSlideImg() && this.getCurrentSlideImg().getBoundingClientRect().height / multiplier || this.getCurrentSlideImg() && this.getCurrentSlideImg().naturalHeight || this.getCurrentSlide() && this.getCurrentSlide().getBoundingClientRect().height;
+	      return this.getCurrentSlideImg() && this.getCurrentSlideImg().getBoundingClientRect().height || this.getCurrentSlideImg() && this.getCurrentSlideImg().naturalHeight || this.getCurrentSlide() && this.getCurrentSlide().getBoundingClientRect().height;
 	    }
 	    return 0;
 	  },
@@ -1237,7 +1239,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule ReactTransitionEvents
 	 */
 
 	'use strict';
@@ -1355,7 +1356,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule getVendorPrefixedEventName
 	 */
 
 	'use strict';

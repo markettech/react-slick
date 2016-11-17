@@ -142,8 +142,7 @@ var helpers = {
   },
   getActiveImageHeight: function () {
     if (this.refs.list) {
-      const multiplier = this.getActiveImageWidth() / (this.getActiveImageWidth() - this.getPaddings(this.getCurrentSlide()));
-      return this.getCurrentSlideImg() && this.getCurrentSlideImg().getBoundingClientRect().height / multiplier ||
+      return this.getCurrentSlideImg() && this.getCurrentSlideImg().getBoundingClientRect().height ||
         this.getCurrentSlideImg() && this.getCurrentSlideImg().naturalHeight ||
         this.getCurrentSlide() && this.getCurrentSlide().getBoundingClientRect().height;
     }

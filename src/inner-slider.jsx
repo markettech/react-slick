@@ -47,6 +47,9 @@ export var InnerSlider = React.createClass({
     // Hack for autoplay -- Inspect Later
     this.onImageLoad(() => {
       this._init();
+      window.setTimeout(() => {
+        this.update(this.props);
+      }, 1500);
     });
     if (window.addEventListener) {
       window.addEventListener('resize', this.onWindowResized);
